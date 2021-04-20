@@ -1,23 +1,35 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <p>{{firstName}} {{lastName}}</p>
+    <p>{{student.firstName}} {{student.lastName}}</p>
   </div>
 </template>
 
 <style>
+#home {
+  font-family: center;
+}
 </style>
-
 <script>
 export default {
   data: function () {
     return {
       message: "Welcome to Vue.js!",
-      firstName: "Stevie",
-      lastName: "Wonder",
+      student: {
+        firstName: "Stevie",
+        lastName: "Wonder",
+      },
     };
   },
   created: function () {},
-  methods: {},
+  methods: {
+    // resumeIndex: function () {
+    //   console.log("resume index");
+    //   // resume web request
+    //   axios.get("/api/resume").then((response) => {
+    //     console.log(response.data);
+    //     this.resume = response.data;
+    //   });
+  },
 };
 </script>
