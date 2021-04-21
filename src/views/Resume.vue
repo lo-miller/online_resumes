@@ -274,7 +274,16 @@ export default {
     };
   },
   created: function () {},
-  methods: {},
+  methods: {
+    resumeShow: function () {
+      console.log("resume show");
+      // resume web request
+      axios.get("/api/students/:id").then((response) => {
+        console.log(response.data);
+        this.student = response.data;
+      });
+    },
+  },
 };
 </script>
 
