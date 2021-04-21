@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <p>{{student.firstName}} {{student.lastName}}</p>
+    <div v-for="student in students">
+     <p> {{student.first_name}} {{student.last_name}} </p>
+      </div>
   </div>
 </template>
 
@@ -11,25 +13,26 @@
 }
 </style>
 <script>
+import axios from "axios";
 export default {
   data: function () {
     return {
       message: "Welcome to Vue.js!",
-      student: {
-        firstName: "Stevie",
-        lastName: "Wonder",
-      },
+      students: [],
     };
   },
-  created: function () {},
+  created: function () {
+    this.resumeIndex();
+  },
   methods: {
-    // resumeIndex: function () {
-    //   console.log("resume index");
-    //   // resume web request
-    //   axios.get("/api/resume").then((response) => {
-    //     console.log(response.data);
-    //     this.resume = response.data;
-    //   });
+    resumeIndex: function () {
+      console.log("resume index");
+      // resume web request
+      axios.get("/api/students").then((response) => {
+        console.log(response.data);
+        this.students = response.data;
+      });
+    },
   },
 };
 </script>
